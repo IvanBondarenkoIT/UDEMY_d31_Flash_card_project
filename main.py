@@ -1,13 +1,28 @@
-from tkinter import *
+from tkinter import Button, Tk, Canvas, Label, PhotoImage
+import pandas
+import random
 BACKGROUND_COLOR = "#B1DDC6"
+
+
+def csv_read():
+    pass
 
 
 # ---------------------------- BUTTONS CLICK  ------------------------------- #
 def right_button_click():
+    #current_word = random.choice(keys)
+    #print(current_word)
+    #print(words_translate[current_word])
+    #keys.remove(current_word)
     pass
+    
 
 
 def wrong_button_click():
+    #current_word = random.choice(keys)
+    #print(current_word)
+    #print(words_translate[current_word])
+    #keys.remove(current_word)
     pass
 
 
@@ -21,6 +36,12 @@ def main():
     back_img = PhotoImage(file="images/card_back.png")
     canvas.create_image(400, 263, image=front_img)
     canvas.grid(row=0, column=0, columnspan=2, rowspan=2)
+
+    df = pandas.read_csv("data/french_words.csv")
+    words_translate = {row[0]: row[1] for (index, row) in df.iterrows()}
+    keys = list(words_translate.keys())
+    
+    # todo change Labels to canvas.create_text
 
     # canvas.create_text(100,10,fill="darkblue",font="Times 20 italic bold",text="Click the bubbles that are multiples of two.")
     # canvas.update
@@ -46,3 +67,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    csv_read()
