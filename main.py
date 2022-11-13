@@ -3,11 +3,12 @@ import pandas
 import random
 
 BACKGROUND_COLOR = "#B1DDC6"
-
+DEF_FILE = "data/french_words.csv"
+TO_LEARN_FILE = "data/words_to_learn.csv"
 try:
-    df = pandas.read_csv("data/words_to_learn.csv")
+    df = pandas.read_csv(TO_LEARN_FILE)
 except FileNotFoundError:
-    df = pandas.read_csv("data/french_words.csv")
+    df = pandas.read_csv(DEF_FILE)
 words_dict = df.to_dict(orient="records")
 current_word = {}
 
