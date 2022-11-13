@@ -3,8 +3,8 @@ import pandas
 import random
 
 BACKGROUND_COLOR = "#B1DDC6"
-DEF_FILE = "data/french_words.csv"
-TO_LEARN_FILE = "data/words_to_learn.csv"
+DEF_FILE = "french_words.csv"
+TO_LEARN_FILE = "words_to_learn.csv"
 try:
     df = pandas.read_csv(TO_LEARN_FILE)
 except FileNotFoundError:
@@ -25,9 +25,6 @@ def right_button_click():
         _data.to_csv("data/words_to_learn.csv", index=False)
 
 
-
-
-
 def flip_card():
     canvas.itemconfig(canvas_image, image=back_img)
     canvas.itemconfig(card_title, text="English", fill="white")
@@ -41,7 +38,6 @@ def wrong_button_click():
     canvas.itemconfig(canvas_image, image=front_img)
     canvas.itemconfig(card_title, text="French", fill="black")
     canvas.itemconfig(card_word, text=current_word["French"], fill="black")
-    # canvas.update()
     flip_timer = window.after(3000, func=flip_card)
 
 
@@ -52,8 +48,8 @@ window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 flip_timer = window.after(3000, func=flip_card)
 
 canvas = Canvas(height=526, width=800, bg=BACKGROUND_COLOR, highlightthickness=0)
-front_img = PhotoImage(file="images/card_front.png")
-back_img = PhotoImage(file="images/card_back.png")
+front_img = PhotoImage(file="card_front.png")
+back_img = PhotoImage(file="card_back.png")
 canvas_image = canvas.create_image(400, 263, image=front_img)
 canvas.grid(row=0, column=0, columnspan=2, rowspan=2)
 
